@@ -1,109 +1,138 @@
+/* Estilos globales para el cuerpo del documento */
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra verticalmente */
-    align-items: center; /* Centra horizontalmente */
-    text-align: center;
-    background: linear-gradient(135deg, #ececec 0%, #f4f4f4 100%);
+    font-family: 'Roboto', sans-serif; /* Fuente principal para el texto */
+    margin: 0; /* Elimina los márgenes predeterminados del navegador */
+    padding: 0; /* Elimina el padding predeterminado */
+    background-color: #f4f4f4; /* Color de fondo de la página */
+    min-height: 100vh; /* Asegura que el contenido ocupe al menos la altura completa de la ventana */
+    display: flex; /* Utiliza flexbox para centrar el contenido */
+    flex-direction: column; /* Organiza los elementos en una columna */
+    justify-content: center; /* Centra verticalmente los elementos dentro del cuerpo */
+    align-items: center; /* Centra horizontalmente los elementos dentro del cuerpo */
+    text-align: center; /* Centra el texto de los elementos */
+    background: linear-gradient(135deg, #ececec 0%, #f4f4f4 100%); /* Gradiente de fondo */
 }
+
+/* Estilos para el título principal */
 h1 {
-    margin-top: 20px;
-    font-size: 42px;
-    color: #007BFF;
+    margin-top: 20px; /* Espacio superior del título */
+    font-size: 42px; /* Tamaño de fuente del título */
+    color: #007BFF; /* Color del texto (azul) */
 }
+
+/* Estilos para la sección de búsqueda */
 #search {
-    margin: 20px 0;
+    margin: 20px 0; /* Margen vertical para separar los elementos */
 }
+
+/* Estilos para el campo de texto donde se ingresa la ciudad */
 input[type="text"] {
-    padding: 12px;
-    font-size: 16px;
-    width: 300px;
-    border: 2px solid #007BFF;
-    border-radius: 8px;
-    outline: none;
-    margin-bottom: 20px;
-    transition: border-color 0.3s ease;
+    padding: 12px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    width: 300px; /* Ancho del campo de texto */
+    border: 2px solid #007BFF; /* Borde azul alrededor del campo */
+    border-radius: 8px; /* Bordes redondeados */
+    outline: none; /* Elimina el borde predeterminado cuando está enfocado */
+    margin-bottom: 20px; /* Margen inferior */
+    transition: border-color 0.3s ease; /* Transición suave para el cambio de color del borde */
 }
+
+/* Estilos para el campo de texto cuando está enfocado */
 input[type="text"]:focus {
-    border-color: #0056b3;
+    border-color: #0056b3; /* Cambia el color del borde cuando el campo está activo */
 }
+
+/* Estilos para el botón de búsqueda */
 button {
-    padding: 12px 20px;
-    font-size: 16px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    padding: 12px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente del botón */
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: white; /* Color del texto en el botón */
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el botón */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para dar efecto de elevación */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
 }
+
+/* Cambia el color de fondo del botón al pasar el mouse sobre él */
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Color de fondo más oscuro en el hover */
 }
+
+/* Estilos para la caja de resultados del clima */
 #weather {
-    margin-top: 0px;
-    padding: 20px;
-    background-color: white;
-    display: inline-block;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-top: 0px; /* Sin margen superior */
+    padding: 20px; /* Espaciado interno */
+    background-color: white; /* Fondo blanco */
+    display: inline-block; /* Alinea el contenido en bloque en línea */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para darle profundidad */
+    max-width: 300px; /* Ancho máximo de la caja */
+    opacity: 0; /* Inicia con opacidad 0 para animar la aparición */
+    transform: translateY(20px); /* Inicia 20px hacia abajo para la animación */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Animación suave para la opacidad y el desplazamiento */
 }
+
+/* Estilos aplicados cuando la caja de clima se muestra */
 #weather.show {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1; /* Aparece gradualmente */
+    transform: translateY(0); /* Se desplaza hacia su posición original */
 }
+
+/* Estilos para el subtítulo de la sección del clima */
 h2 {
-    margin: 0;
-    font-size: 24px;
+    margin: 0; /* Sin márgenes */
+    font-size: 24px; /* Tamaño de fuente */
 }
+
+/* Estilos para los párrafos */
 p {
-    margin: 5px 0;
-    font-size: 18px;
-    color: #555;
+    margin: 5px 0; /* Margen vertical */
+    font-size: 18px; /* Tamaño de fuente */
+    color: #555; /* Color gris para el texto */
 }
+
+/* Estilos para la imagen que muestra el icono del clima */
 img {
-    margin-top: 10px;
+    margin-top: 10px; /* Margen superior */
 }
+
+/* Estilos para el pie de página */
 footer {
-    background-color: #0056b3;
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    font-size: 14px;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #0056b3; /* Fondo azul oscuro */
+    padding: 20px; /* Espaciado interno */
+    width: 100%; /* Ocupa todo el ancho de la página */
+    text-align: center; /* Centra el texto */
+    position: fixed; /* Fija el pie de página en la parte inferior */
+    bottom: 0; /* Posición en la parte inferior */
+    font-size: 14px; /* Tamaño de fuente pequeño */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil en la parte superior del pie de página */
 }
 
+/* Estilos para el texto del pie de página */
 footer p {
-    color: white;
+    color: white; /* Texto en blanco */
 }
 
+/* Estilos para la imagen de cabecera */
 #headerImage {
-    display: block;
-    margin: 0 auto; /* Centra la imagen horizontalmente */
-    width: 300px; /* Ajusta el ancho según tus necesidades */
-    height: auto; /* Mantiene la proporción */
+    display: block; /* Se muestra como bloque */
+    margin: 0 auto; /* Centra la imagen */
+    width: 300px; /* Ancho de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
 }
 
-/* Media Query para pantallas pequeñas */
+/* Media Query para ajustar el diseño en pantallas pequeñas */
 @media (max-width: 600px) {
+    /* Reduce el tamaño de la fuente del título en pantallas pequeñas */
     h1 {
-        font-size: 32px; /* Reduce el tamaño de la fuente */
+        font-size: 32px; /* Tamaño de fuente más pequeño */
     }
 
+    /* Ajusta el ancho del campo de texto y el botón en pantallas pequeñas */
     input[type="text"],
     button {
-        width: 90%; /* Ancho completo en pantallas pequeñas */
+        width: 90%; /* El ancho ocupa el 90% del contenedor en lugar de un valor fijo */
     }
 }

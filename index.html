@@ -1,61 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Clima con OpenWeather API</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="logoWeather.png" type="image/png">
+    <!-- Metadatos básicos del documento -->
+    <meta charset="UTF-8"> <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura que la página sea responsive, adaptándose a diferentes tamaños de pantalla -->
+    <title>Buscar Clima con OpenWeather API</title> <!-- Título que aparece en la pestaña del navegador -->
+    
+    <!-- Vinculación de archivos externos -->
+    <link rel="stylesheet" href="style.css"> <!-- Enlace al archivo CSS para estilos personalizados -->
+    <link rel="icon" href="logoWeather.png" type="image/png"> <!-- Define el ícono de la pestaña del navegador -->
 </head>
 <body>
 
-    <img src="./logoWeather.png" alt="Sol y Nube" id="headerImage">
+    <!-- Imagen de cabecera que muestra un sol y una nube -->
+    <img src="./logoWeather.png" alt="Sol y Nube" id="headerImage"> <!-- Imagen centrada, sin fondo, representando el clima -->
 
+    <!-- Título principal de la página -->
     <h1>Consulta el Clima</h1>
 
+    <!-- Sección de búsqueda donde el usuario introduce el nombre de la ciudad -->
     <div id="search">
+        <!-- Campo de texto donde el usuario ingresa la ciudad -->
         <input type="text" id="cityInput" placeholder="Ingresa el nombre de la ciudad">
+        <!-- Botón que al hacer clic llama a la función getWeather para obtener los datos del clima -->
         <button onclick="getWeather()">Buscar Clima</button>
     </div>
 
+    <!-- Sección donde se mostrarán los resultados del clima -->
     <div id="weather">
-        <h2>Clima de la ciudad aparecerá aquí</h2>
+        <h2>Clima de la ciudad aparecerá aquí</h2> <!-- Texto predeterminado antes de que se muestre el clima -->
         <p>Introduce una ciudad para obtener el clima actual.</p>
     </div>
 
+    <!-- Pie de página con el nombre del autor -->
     <footer>
         <p>Hecho por Julio Sanchez &copy; 2024</p>
     </footer>
 
+    <!-- Script JavaScript para manejar la interacción con la API de OpenWeather -->
     <script>
+        // Tu API Key para acceder a OpenWeather
         const apiKey = '99c10dc1302d2d14938a0634953fed60';
 
+        // Función que se ejecuta al hacer clic en el botón o presionar Enter
         function getWeather() {
+            // Obtiene el valor ingresado por el usuario
             const city = document.getElementById('cityInput').value;
+            // Crea la URL para hacer la solicitud a la API de OpenWeather con la ciudad y la API Key
             const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
+            // Realiza la solicitud a la API
             fetch(apiUrl)
                 .then(response => {
+                    // Si la respuesta no es exitosa, lanza un error
                     if (!response.ok) {
                         throw new Error('Error en la solicitud de la API');
                     }
+                    // Convierte la respuesta a JSON
                     return response.json();
                 })
                 .then(data => {
+                    // Extrae los datos relevantes: temperatura, descripción del clima, y el icono del clima
                     const temperature = data.main.temp;
                     const weatherDescription = data.weather[0].description;
                     const weatherIcon = data.weather[0].icon;
                     const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
+                    // Actualiza el contenido de la sección de clima con los nuevos datos
                     document.getElementById('weather').innerHTML = `
                         <h2>Clima en ${city}</h2>
                         <p>Temperatura: ${temperature}°C</p>
                         <p>Descripción: ${weatherDescription}</p>
                         <img src="${iconUrl}" alt="Icono del clima">
                     `;
+                    // Agrega la clase 'show' para mostrar el clima con animación
                     document.getElementById('weather').classList.add('show');
                 })
                 .catch(error => {
+                    // En caso de error, muestra un mensaje indicando que no se pudo obtener el clima
                     console.error('Error al obtener los datos:', error);
                     document.getElementById('weather').innerHTML = `
                         <h2>Error al obtener el clima</h2>
@@ -64,9 +86,10 @@
                 });
         }
 
+        // Agrega un evento para que al presionar la tecla Enter, también se ejecute la función getWeather
         document.getElementById('cityInput').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
-                getWeather();
+                getWeather(); // Llama a la función cuando se presiona Enter
             }
         });
     </script>
